@@ -1,0 +1,15 @@
+header {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.main-display h2 {
+    font-size: 3rem;
+}
+.main-display p {
+    font-size: 1.8rem;
+}

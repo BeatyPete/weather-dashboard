@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <title>Waddup Weather</title>
+    </head>
+
+    <body>
+        <header class="bg-dark text-light">
+            <h1>Weather Dashboard</h1>
+        </header>
+        
+        <main class="min-vh-100 d-flex">
+            <!-- search area and history -->
+            <section class="bg-light p-3 w-25">
+                <h2>Search for a City:</h2>
+                <div class="input-group mb-3 w-75">
+                    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary btn-primary text-light" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <!-- history list -->
+                <ul class="list-group">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </section>
+
+            <!-- current city and 5-day display -->
+            <section class="p-3 w-100">
+                <div class="card mb-4">
+                    <div class="card-body main-display">
+                        <h2 class="card-title">Atlanta (8/15/2019)</h2>
+                        <p>Temperature: 90.9 &deg;F</p>
+                        <p>Humidity: 41%</p>
+                        <p>Wind Speed: 4.7 MPH</p>
+                        <p>
+                            UV Index:
+                            <span class="badge badge-danger">9.49</span>
+                        </p>
+                    </div>
+                </div>
+
+                <h3>5-Day Forecast</h3>
+                <div class="row">
+                
+                    <div class="card col mx-3 bg-primary text-white">
+                        <div class="card-body">
+                            <h4 class="card-title">8/16/2019</h4>
+                            <i class="fas fa-adjust"></i>
+                            <p>Temp: 86.84 &deg;F</p>
+                            <p>Humidity: 43%</p>
+                        </div>
+                    </div>
+                    <div class="card col mx-3 bg-primary text-white">
+                        <div class="card-body">
+                            <h4 class="card-title">8/16/2019</h4>
+                            <i class="fas fa-adjust"></i>
+                            <p>Temp: 86.84 &deg;F</p>
+                            <p>Humidity: 43%</p>
+                        </div>
+                    </div>
+                    <div class="card col mx-3 bg-primary text-white">
+                        <div class="card-body">
+                            <h4 class="card-title">8/16/2019</h4>
+                            <i class="fas fa-adjust"></i>
+                            <p>Temp: 86.84 &deg;F</p>
+                            <p>Humidity: 43%</p>
+                        </div>
+                    </div>
+                    <div class="card col mx-3 bg-primary text-white">
+                        <div class="card-body">
+                            <h4 class="card-title">8/16/2019</h4>
+                            <i class="fas fa-adjust"></i>
+                            <p>Temp: 86.84 &deg;F</p>
+                            <p>Humidity: 43%</p>
+                        </div>
+                    </div>
+                    <div class="card col mx-3 bg-primary text-white">
+                        <div class="card-body">
+                            <h4 class="card-title">8/16/2019</h4>
+                            <i class="fas fa-adjust"></i>
+                            <p>Temp: 86.84 &deg;F</p>
+                            <p>Humidity: 43%</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+        </main>
+        
+        <script src="https://kit.fontawesome.com/0e715984a4.js" crossorigin="anonymous"></script>
+        <script src="./assets/js/script.js"></script>
+    </body>
+</html>

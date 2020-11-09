@@ -1,10 +1,18 @@
+var histList = [];
+
 var citySelectorEl = document.querySelector("#city-submit");
 var currWeatherEl = document.querySelector(".main-display")
+var listContainer = document.querySelector(".hist-list")
 
-var citySubmit = function(event) {
+var citySubmitHandler = function(event) {
     event.preventDefault();
     var cityInput = document.querySelector("input").value;
+    citySelectorEl.reset();
     getWeather(cityInput);
+};
+
+var histSubmit = function(event) {
+    console.log("click")
 };
 
 var getWeather = function(cityName) {
@@ -37,7 +45,6 @@ var getUV = function(cityWeather) {
 
 var displayCurrent = function(cityWeather, uv) {
     currWeatherEl.innerHTML = "";
-    console.log(uv);
     //get date for city and turn into moment
     var date = moment.unix(cityWeather.dt).format("(M/DD/YYYY)");
     //display city name and current date
@@ -73,8 +80,48 @@ var displayCurrent = function(cityWeather, uv) {
         uvBadge.classList = "badge bg-danger";
     };
     currWeatherEl.appendChild(uvEl);
+    //add displayed city to history
+    addHistory(cityWeather.name);
+};
+
+var addHistory = function(cityName) {
+    //check if inserted name is already in history
+    if (histList.indexOf(cityName) !== -1) {
+        return;
+    }
+    else {
+        //create history list item
+        var historyEl = document.createElement("li");
+        historyEl.classList = "list-group-item";
+        historyEl.innerHTML = cityName;
+        listContainer.appendChild(historyEl);
+        //add list item to history array
+        histList.push(cityName);
+        //save history
+        localStorage.setItem("historyList", JSON.stringify(histList));
+    }
+};   
+
+var loadHistory = function() {
+    if (window.localStorage.length < 1) {
+        return;
+    }
+    else {
+        var hist = localStorage.getItem("historyList");
+        hist = JSON.parse(hist);
+        histList = hist;
+        for (i = 0; i < histList.length; i++) {
+            var historyEl = document.createElement("li");
+            historyEl.classList = "list-group-item";
+            historyEl.innerHTML = histList[i];
+            listContainer.appendChild(historyEl);
+        }
+    }
 };
 
 
 
-citySelectorEl.addEventListener("submit", citySubmit);
+citySelectorEl.addEventListener("submit", citySubmitHandler);
+listContainer.addEventListener("click", histSubmit);
+
+loadHistory();

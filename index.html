@@ -18,12 +18,14 @@
             <!-- search area and history -->
             <section class="bg-light p-3 w-25">
                 <h2>Search for a City:</h2>
+                <form id="city-submit">
                 <div class="input-group mb-3 w-75">
-                    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <input  type="text" class="form-control" placeholder="">
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary btn-primary text-light" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-outline-secondary btn-primary text-light" type="submit" id="button-addon1"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
+                </form>
                 <!-- history list -->
                 <ul class="list-group">
                     <li class="list-group-item">Cras justo odio</li>
@@ -38,7 +40,7 @@
             <section class="p-3 w-100">
                 <div class="card mb-4">
                     <div class="card-body main-display">
-                        <h2 class="card-title">Atlanta (8/15/2019)</h2>
+                        <h2 class="card-title" id="city-display">Atlanta (8/15/2019)</h2>
                         <p>Temperature: 90.9 &deg;F</p>
                         <p>Humidity: 41%</p>
                         <p>Wind Speed: 4.7 MPH</p>

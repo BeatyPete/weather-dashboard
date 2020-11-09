@@ -12,7 +12,11 @@ var citySubmitHandler = function(event) {
 };
 
 var histSubmit = function(event) {
-    console.log("click")
+    var targetEl = event.target;
+    if (targetEl.matches(".list-group-item")) {
+        var cityName = targetEl.textContent;
+        getWeather(cityName);
+    }
 };
 
 var getWeather = function(cityName) {

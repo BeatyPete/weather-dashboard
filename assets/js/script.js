@@ -3,6 +3,7 @@ var histList = [];
 var citySelectorEl = document.querySelector("#city-submit");
 var currWeatherEl = document.querySelector(".main-display")
 var listContainer = document.querySelector(".hist-list")
+var dailyContainer = document.querySelector(".daily-display")
 
 var citySubmitHandler = function(event) {
     event.preventDefault();
@@ -25,6 +26,7 @@ var getWeather = function(cityName) {
         if (response.ok) {
           response.json().then(function(data) {
               getUV(data);
+              getDailyWeather(data);
           });
         } else {
           alert("Error: " + response.statusText);
@@ -47,6 +49,21 @@ var getUV = function(cityWeather) {
       });
 };
 
+var getDailyWeather = function(cityWeather) {
+    var lat = cityWeather.coord.lat;
+    var lon = cityWeather.coord.lon;
+    var apiUrl = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current&units=imperial&appid=221a2ad7e76ce710f1907c1731e24ff2`;
+    fetch(apiUrl).then(function(response) {
+        if (response.ok) {
+          response.json().then(function(data) {
+              displayDaily(data);
+          });
+        } else {
+          alert("Error: " + response.statusText);
+        }
+    });
+};
+
 var displayCurrent = function(cityWeather, uv) {
     currWeatherEl.innerHTML = "";
     //get date for city and turn into moment
@@ -54,7 +71,7 @@ var displayCurrent = function(cityWeather, uv) {
     //display city name and current date
     var cityNameEl = document.createElement("h2");
     cityNameEl.classList = "card-title";
-    cityNameEl.innerHTML = `${cityWeather.name} ${date}`;
+    cityNameEl.innerHTML = `${cityWeather.name} ${date} <img src="http://openweathermap.org/img/wn/${cityWeather.weather[0].icon}@2x.png">`;
     currWeatherEl.appendChild(cityNameEl);
     //display temp
     var tempEl = document.createElement("p");
@@ -87,6 +104,22 @@ var displayCurrent = function(cityWeather, uv) {
     //add displayed city to history
     addHistory(cityWeather.name);
 };
+
+var displayDaily = function(dailyWeather) {
+    dailyContainer.innerHTML = "";
+    console.log(dailyWeather);
+    for (i=0; i < 5; i++) {
+        var date = moment.unix(dailyWeather.daily[i].dt).format("(M/DD/YYYY)");
+        var icon = `http://openweathermap.org/img/wn/${dailyWeather.daily[i].weather[0].icon}@2x.png`
+        var cardContainer = document.createElement("div");
+        cardContainer.classList = "card col mx-3 bg-primary text-white";
+        dailyContainer.appendChild(cardContainer);
+        var cardBody = document.createElement("div");
+        cardBody.classList = "card-body";
+        cardBody.innerHTML = `<h4 class="card-title">${date}</h4><img src="${icon}"><p>Temp: ${dailyWeather.daily[i].temp.day} &deg;F</p><p>Humidity: ${dailyWeather.daily[i].humidity}%</p>`;
+        cardContainer.appendChild(cardBody);
+    };
+}; 
 
 var addHistory = function(cityName) {
     //check if inserted name is already in history

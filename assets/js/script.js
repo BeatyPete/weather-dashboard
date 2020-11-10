@@ -24,7 +24,7 @@ var histSubmit = function(event) {
 };
 
 var getWeather = function(cityName) {
-    var apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=221a2ad7e76ce710f1907c1731e24ff2`;
+    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=221a2ad7e76ce710f1907c1731e24ff2`;
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
           response.json().then(function(data) {
@@ -40,7 +40,7 @@ var getWeather = function(cityName) {
 var getUV = function(cityWeather) {
     var lat = cityWeather.coord.lat;
     var lon = cityWeather.coord.lon;
-    var apiUrl = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=221a2ad7e76ce710f1907c1731e24ff2`;
+    var apiUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=221a2ad7e76ce710f1907c1731e24ff2`;
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
           response.json().then(function(data) {
@@ -55,7 +55,7 @@ var getUV = function(cityWeather) {
 var getDailyWeather = function(cityWeather) {
     var lat = cityWeather.coord.lat;
     var lon = cityWeather.coord.lon;
-    var apiUrl = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current&units=imperial&appid=221a2ad7e76ce710f1907c1731e24ff2`;
+    var apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current&units=imperial&appid=221a2ad7e76ce710f1907c1731e24ff2`;
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
           response.json().then(function(data) {

@@ -74,7 +74,7 @@ var displayCurrent = function(cityWeather, uv) {
     //display city name and current date
     var cityNameEl = document.createElement("h2");
     cityNameEl.classList = "card-title";
-    cityNameEl.innerHTML = `${cityWeather.name} ${date} <img src="http://openweathermap.org/img/wn/${cityWeather.weather[0].icon}@2x.png">`;
+    cityNameEl.innerHTML = `${cityWeather.name} ${date} <img src="https://openweathermap.org/img/wn/${cityWeather.weather[0].icon}@2x.png">`;
     currWeatherEl.appendChild(cityNameEl);
     //display temp
     var tempEl = document.createElement("p");
@@ -112,7 +112,7 @@ var displayDaily = function(dailyWeather) {
     dailyContainer.innerHTML = "";
     for (i=0; i < 5; i++) {
         var date = moment.unix(dailyWeather.daily[i].dt).format("(M/DD/YYYY)");
-        var icon = `http://openweathermap.org/img/wn/${dailyWeather.daily[i].weather[0].icon}@2x.png`
+        var icon = `https://openweathermap.org/img/wn/${dailyWeather.daily[i].weather[0].icon}@2x.png`
         var cardContainer = document.createElement("div");
         cardContainer.classList = "card col mx-3 bg-primary text-white";
         dailyContainer.appendChild(cardContainer);

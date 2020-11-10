@@ -5,9 +5,12 @@ var currWeatherEl = document.querySelector(".main-display")
 var listContainer = document.querySelector(".hist-list")
 var dailyContainer = document.querySelector(".daily-display")
 
+var audio = new Audio('./assets/audio/submit.mp3');
+
 var citySubmitHandler = function(event) {
     event.preventDefault();
     var cityInput = document.querySelector("input").value;
+    audio.play();
     citySelectorEl.reset();
     getWeather(cityInput);
 };
@@ -107,7 +110,6 @@ var displayCurrent = function(cityWeather, uv) {
 
 var displayDaily = function(dailyWeather) {
     dailyContainer.innerHTML = "";
-    console.log(dailyWeather);
     for (i=0; i < 5; i++) {
         var date = moment.unix(dailyWeather.daily[i].dt).format("(M/DD/YYYY)");
         var icon = `http://openweathermap.org/img/wn/${dailyWeather.daily[i].weather[0].icon}@2x.png`
@@ -155,7 +157,6 @@ var loadHistory = function() {
         }
     }
 };
-
 
 
 citySelectorEl.addEventListener("submit", citySubmitHandler);
